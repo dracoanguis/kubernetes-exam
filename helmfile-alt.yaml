@@ -1,0 +1,4 @@
+releases:
+ - name: kube-project
+   namespace: exam-project
+   chart: "https://github.com/dracoanguis/kubernetes-exam/releases/download/kube-project-1.0.1/kube-project-1.0.1.tgz"
