@@ -62,6 +62,10 @@ dependencies:
     version: 1.0.0
     repository: "file://charts/microservice"
   - name: microservice
+    alias: recommendationservice
+    version: 1.0.0
+    repository: "file://charts/microservice"
+  - name: microservice
     alias: shippingservice
     version: 1.0.0
     repository: "file://charts/microservice"

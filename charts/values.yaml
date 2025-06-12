@@ -4,7 +4,7 @@
 
 
 # only valid for exam duration will destroy itself on 18th of june 2025
-dockerconfigjson: '{"auths":{"ghcr.io":{"auth":"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"}}}'
+dockerconfigjson: '{"auths":{"ghcr.io":{"auth":"ZHJhY29hbmd1aXM6Z2hwX3RMMUI2eEcxVzR5bXFPRXltdkpZVFpCdEloRWVXcjJNSlFDRA=="}}}'
 
 ingress:
   enabled: true
