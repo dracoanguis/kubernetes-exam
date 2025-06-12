@@ -1,0 +1,6 @@
+releases:
+  - name: kube-project
+    namespace: exam-project
+    chart: .
+    values:
+      - values.yaml

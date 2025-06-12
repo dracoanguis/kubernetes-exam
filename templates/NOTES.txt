@@ -1,0 +1,62 @@
+This project is not a scam please, I swear TT.
+
+Thank you for installing the kube-project Helm chart!
+
+Useful Information:
+-------------------
+
+1. **Namespace:**  
+   Your resources are deployed in the namespace: {{ .Release.Namespace }}
+
+2. **Accessing the Frontend via Ingress:**  
+   Ingress is enabled and configured with a self-signed certificate using cert-manager.  
+   Access your application at:  
+   https://exam-project.127.0.0.1.nip.io  
+   (You may need to accept the self-signed certificate warning in your browser.)
+
+   To check the ingress status:
+   `kubectl get ingress -n {{ .Release.Namespace }}`
+
+3. **TLS Certificates:**  
+   TLS is managed by cert-manager with the `selfsigned-cluster-issuer`.  
+   The certificate is stored in the secret: `exam-project-tls`.
+
+4. **Image Pull Secrets:**  
+   The chart uses the image pull secret `ghcr-io-dockerconfigjson` for pulling private images from GitHub Container Registry.
+
+5. **Dependencies:**  
+   This chart includes Redis as a dependency.  
+   Redis service: `{{ .Release.Name }}-redis` on port 6379.
+
+6. **Service Endpoints:**  
+   The following services are deployed (use `kubectl get svc -n {{ .Release.Namespace }}` to see details):
+   - adservice
+   - cartservice
+   - checkoutservice
+   - currencyservice
+   - emailservice
+   - frontend
+   - paymentservice
+   - productcatalogservice
+   - recommendationservice
+   - shippingservice
+   - shoppingassistantservice
+
+7. **Persistent Storage:**  
+   If you enabled persistence for Redis, a PersistentVolumeClaim is created.  
+   Check with:  
+   `kubectl get pvc -n {{ .Release.Namespace }}`
+
+8. **Uninstalling:**  
+   To uninstall this release:
+   helm uninstall {{ .Release.Name }} -n {{ .Release.Namespace }}
+
+9. **Troubleshooting:**  
+   - Check pod status:  
+     `kubectl get pods -n {{ .Release.Namespace }}`
+   - View logs:  
+     `kubectl logs <pod-name> -n {{ .Release.Namespace }}`
+   - Check ingress events:  
+     `kubectl describe ingress -n {{ .Release.Namespace }}`
+
+For more details, see the README or values.yaml in this chart.

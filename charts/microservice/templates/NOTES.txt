@@ -1,0 +1,2 @@
+Microservice template
+This only works with grpc service, if you want to use another type you have to overide every key manually

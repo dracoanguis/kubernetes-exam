@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "microservice.fullname" . }}
+  labels:
+    {{- include "microservice.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "microservice.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "microservice.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+    {{- with default .Values.global.imagePullSecrets .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: IfNotPresent
+          env:
+            {{- range .Values.env }}
+            - name: {{ .name }}
+              value: {{ if hasSuffix "_ADDR" .name -}}
+                "{{ $.Release.Name }}-{{ .value }}"
+              {{- else -}}
+                "{{ .value }}"
+              {{- end }}
+            {{- end }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          {{- include "microservice.livenessProbe" . | nindent 10 }}
+          {{- include "microservice.readinessProbe" . | nindent 10 }}

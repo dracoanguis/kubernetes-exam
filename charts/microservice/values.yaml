@@ -1,0 +1,25 @@
+# Default values for microservice.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# We use only one has we work with grpc and we don't want to set up a load balancer for it.
+replicaCount: 1
+
+
+# This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
+service:
+  # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+  type: ClusterIP
+  # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
+  port: 80
+
+# This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+readinessProbe:
+  custom:
+  initialDelaySeconds: 20
+  periodSeconds: 15
+  grpc:
+    port: 80
+livenessProbe:
+  initialDelaySeconds: 20
+  periodSeconds: 15
