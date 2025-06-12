@@ -1,0 +1,63 @@
+apiVersion: v1
+entries:
+  kube-project:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-06-12T04:40:23.100039565Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 20.5.0
+    - alias: adservice
+      name: microservice
+      repository: file://charts/microservice
+      version: 1.0.0
+    - alias: cartservice
+      name: microservice
+      repository: file://charts/microservice
+      version: 1.0.0
+    - alias: checkoutservice
+      name: microservice
+      repository: file://charts/microservice
+      version: 1.0.0
+    - alias: currencyservice
+      name: microservice
+      repository: file://charts/microservice
+      version: 1.0.0
+    - alias: emailservice
+      name: microservice
+      repository: file://charts/microservice
+      version: 1.0.0
+    - alias: frontend
+      name: microservice
+      repository: file://charts/microservice
+      version: 1.0.0
+    - alias: paymentservice
+      name: microservice
+      repository: file://charts/microservice
+      version: 1.0.0
+    - alias: productcatalogservice
+      name: microservice
+      repository: file://charts/microservice
+      version: 1.0.0
+    - alias: recommendationservice
+      name: microservice
+      repository: file://charts/microservice
+      version: 1.0.0
+    - alias: shippingservice
+      name: microservice
+      repository: file://charts/microservice
+      version: 1.0.0
+    - alias: shoppingassistantservice
+      name: microservice
+      repository: file://charts/microservice
+      version: 1.0.0
+    description: A Helm chart for the kubernetes course end project
+    digest: 1f0a09937c25c61f0ba0ade55895cabbfda430f6fc64de291e104f8c11f5a93a
+    name: kube-project
+    type: application
+    urls:
+    - https://github.com/dracoanguis/kubernetes-exam/releases/download/kube-project-1.0.0/kube-project-1.0.0.tgz
+    version: 1.0.0
+generated: "2025-06-12T04:40:23.100049083Z"
